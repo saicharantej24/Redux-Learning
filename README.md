@@ -1,4 +1,3 @@
-# Redux-Learning
 # Redux
 ```text
 ---Creating a themecontext to share data w/o passing it through every component.
@@ -72,5 +71,39 @@ const Test=()=>
 export default Test;
 ```
 --------------------------***************----------------------------------
+```text
+wrapping everything in App.js is not good Idea
+```
+# ThemeContext.js:
+```js
+import {createContext} from "react";
+const ThemeContext=createContext();
+export const ThemeContextProvider=({children})=>
+{
+    return(
+        <ThemeContext.Provider value={"white"}>{children}
+        </ThemeContext.Provider>
+    );
+};
+export default ThemeContext;
+```
+# App.js
+```js
+import {ThemeContextProvider} from "./context/ThemeContext";
+import ChangeThemeBtn from "./components/ChangeThemeBtn";
+function App() {
+  return (
+    <div className="App">
+      <ThemeContextProvider >
+        <ChangeThemeBtn/>
+      </ThemeContextProvider>
+    </div>
+  );
+}    
+
+export default App;
+```
+
+
 
 
